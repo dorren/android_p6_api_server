@@ -1,0 +1,9 @@
+{
+  "node_host": "http://localhost:3000",
+  "rethinkdb": {
+    "host":    "localhost",
+    "port":    28015,
+    "authKey": "",
+    "db":      "events_prod"
+  }
+}

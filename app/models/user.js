@@ -1,0 +1,37 @@
+var BaseModel = require('./base_model');
+var r = require('rethinkdb');
+
+class User extends BaseModel {
+  static tableName() { return "users"; }
+
+  constructor(attrs){
+    super();
+    this.attrs = this.cleanAttrs(attrs);
+  }
+
+  cleanAttrs(attrs) {
+    var result = Object.assign({}, attrs);
+    delete result['password'];
+
+    return result;
+  }
+
+  static by_email(email, callback) {
+    var table = this.tableName();
+    r.table(table).filter(r.row('email').eq(email)).
+      run(dbConn, function(err, cursor) {
+          if (err) throw err;
+
+          cursor.toArray(function(err, result) {
+              if (err) throw err;
+
+              var users = result.map( x => {
+                return new User(x);
+              });
+              callback(users);
+          });
+      });
+  }
+}
+
+module.exports = User;
