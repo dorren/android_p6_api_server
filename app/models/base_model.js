@@ -4,6 +4,17 @@ class BaseModel {
   constructor(attrs){
     this.attrs = attrs;
   }
+
+  static findAll(callback) {
+    var table = this.tableName();
+    r.table(table).orderBy(r.desc('created_at')).run(dbConn, (err, result) => {
+        if (err) throw err;
+
+        var models = result.map(x => new this(x));
+        callback(models);
+    });
+  }
+
   /**
    * find one model by id
    */
@@ -19,6 +30,8 @@ class BaseModel {
 
   static create(attrs, callback) {
     var table = this.tableName();
+    attrs = Object.assign(attrs, {created_at: new Date()});
+
     r.table(table).
       insert(attrs).run(dbConn, (err, result) => {
         if (err) throw err;

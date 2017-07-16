@@ -1,22 +1,17 @@
 var Event = require("../models/event");
 var User = require("../models/user");
 
-EventsController = {
+var EventsController = {
   index: (req, res, next) => {
-    var email = req.query.email;
-    if(email) {
-      User.by_email(email, users => {
-        var users_arr = users.map(x => x.attrs);
-        res.json(users_arr);
-      });
-    }else{
-      res.json([]);
-    }
+    Event.findAll(events => {
+      var events_arr = events.map(x => x.attrs);
+      res.json(events_arr);
+    });
   },
 
   show: (req, res, next) => {
-    Event.find(req.params.event_id, event => {
-      res.json(event.attrs);
+    Event.findFull(req.params.event_id, event => {
+      res.json(event);
     });
   },
 
@@ -35,6 +30,24 @@ EventsController = {
 
   remove: function(req, res, next) {
 
+  },
+
+  bookmark: (req, res, next) => {
+    var event_id = req.params.event_id;
+    var user_id = req.body.user_id;
+    var attrs = {event_id: event_id, user_id: user_id};
+
+    EventUser.create(attrs, eventUser =>{
+      eventUser.event(event => {
+        res.json(event.attrs);
+      })
+    });
+  },
+
+  unbookmark: (req, res, next) => {
+  },
+
+  confirm: (req, res, next) => {
   }
 }
 

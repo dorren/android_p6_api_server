@@ -27,9 +27,14 @@ class TestHelper {
       },
       function(cb){  // truncate table
         r.table('events').delete().run(dbConn, (result)=>{
+          cb(null);
+        });
+      },
+      function(cb){  // truncate table
+        r.table('events_users').delete().run(dbConn, (result)=>{
           cb(null, 'done');
         });
-      }
+      },
     ], function(err, result){
       callback();
     });

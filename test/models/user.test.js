@@ -1,6 +1,7 @@
 import test from 'ava';
 import TestHelper from '../test_helper'
 import User from '../../app/models/user'
+import async from 'async'
 
 test.cb.beforeEach(t => {
   TestHelper.setupDB(t.end);
@@ -13,13 +14,34 @@ test("constructor", t => {
 	t.deepEqual(user.attrs, attrs);
 });
 
-test.cb("create", t => {
+test.serial.cb("create", t => {
   let attrs = {name: 'John', email: 'john@gmail.com'}
   var user = User.create(attrs, user =>{
 
     t.not(user.attrs.id, null);
     t.is(user.attrs.name, attrs.name);
     t.is(user.attrs.email, attrs.email);
+    t.end();
+  });
+});
+
+test.serial.cb("findAll", t => {
+  async.waterfall([
+    function(cb){
+      var attrs = {name: 'John', email: 'john@gmail.com'}
+      User.create(attrs, user =>{ cb(null); });
+    },
+    function(cb){
+      var attrs = {name: 'Joe', email: 'joe@gmail.com'}
+      User.create(attrs, user =>{ cb(null); });
+    },
+    function(cb){
+      User.findAll(users =>{
+        cb(null, users);
+      });
+    },
+  ], function(err, result){
+    t.is(result.length, 2);
     t.end();
   });
 });

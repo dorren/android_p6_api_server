@@ -1,6 +1,6 @@
 var User = require("../models/user");
 
-UsersController = {
+var UsersController = {
   index: (req, res, next) => {
     var email = req.query.email;
     if(email) {

@@ -28,6 +28,7 @@ UserEvents
 
 ## APIs
 
+<pre>
 GET /users/<ID>
 PUT /users/<ID>
 
@@ -40,3 +41,4 @@ POST   /events/<EVENT_ID>/bookmark  {user_id: <USER_ID>}
 DELETE /events/<EVENT_ID>/bookmark  {user_id: <USER_ID>}
 POST   /events/<EVENT_ID>/confirm   {user_id: <USER_ID>}
 DELETE /events/<EVENT_ID>/confirm   {user_id: <USER_ID>}
+</pre>

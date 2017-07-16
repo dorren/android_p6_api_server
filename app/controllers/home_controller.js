@@ -1,6 +1,6 @@
 var User = require("../models/user");
 
-HomeController = {
+var HomeController = {
   index: (req, res, next) => {
     var msg = {description: "events api"};
     res.json(msg);

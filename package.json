@@ -6,7 +6,7 @@
   "scripts": {
     "production": "NODE_ENV=production node ./bin/www",
     "start": "node ./bin/www",
-    "test": "NODE_ENV=test ava",
+    "test": "NODE_ENV=test ava --serial",
     "test:watch": "ava --watch"
   },
   "author": "",

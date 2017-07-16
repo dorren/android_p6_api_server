@@ -1,5 +1,5 @@
-var BaseModel = require('./base_model');
 var r = require('rethinkdb');
+var BaseModel = require('./base_model');
 
 class User extends BaseModel {
   static tableName() { return "users"; }

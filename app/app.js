@@ -1,5 +1,7 @@
 var AppCfg = require("../config/app_cfg");
 
+require('babel-core/register');
+require('babel-polyfill');
 var EventEmitter = require('events');
 var express = require('express');
 var path = require('path');
