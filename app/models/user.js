@@ -32,6 +32,23 @@ class User extends BaseModel {
           });
       });
   }
+
+  static authenticate(email, password, callback) {
+    var table = this.tableName();
+    r.table(table).filter(r.row('email').eq(email).and(r.row('password').eq(password))).
+      run(dbConn, function(err, cursor) {
+          if (err) throw err;
+
+          cursor.toArray(function(err, result) {
+              if (err) throw err;
+
+              var users = result.map( x => {
+                return new User(x);
+              });
+              callback(users[0]);
+          });
+      });
+  }
 }
 
 module.exports = User;

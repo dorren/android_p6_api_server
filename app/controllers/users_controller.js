@@ -41,6 +41,19 @@ var UsersController = {
 
   },
 
+  authenticate: (req, res, next) {
+    var email = req.body.email;
+    var password = req.body.password;
+
+    User.authenticate(email, password, user => {
+      if(user != undefined){
+        res.json(user.attrs);
+      }else {
+        res.json({error: "invalid user"});
+      }
+    });
+  }
+
   /**
    * return user's bookmarked and confirmed events.
    */

@@ -45,3 +45,37 @@ test.serial.cb("findAll", t => {
     t.end();
   });
 });
+
+test.serial.cb("authenticate", t => {
+  async.waterfall([
+    function(cb){
+      var attrs = {name: 'John', email: 'john@gmail.com', password: 'testtest'}
+      User.create(attrs, user =>{ cb(null); });
+    },
+    function(cb){
+      User.authenticate('john@gmail.com', 'testtest', user =>{
+        cb(null, user);
+      });
+    },
+  ], function(err, result){
+    t.not(result, null);
+    t.end();
+  });
+});
+
+test.serial.cb("authenticate fail", t => {
+  async.waterfall([
+    function(cb){
+      var attrs = {name: 'John', email: 'john@gmail.com', password: 'testtest'}
+      User.create(attrs, user =>{ cb(null); });
+    },
+    function(cb){
+      User.authenticate('john@gmail.com', '', user =>{
+        cb(null, user);
+      });
+    },
+  ], function(err, result){
+    t.is(result, undefined);
+    t.end();
+  });
+});
