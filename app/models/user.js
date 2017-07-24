@@ -18,7 +18,7 @@ class User extends BaseModel {
 
   static by_email(email, callback) {
     var table = this.tableName();
-    r.table(table).filter(r.row('email').eq(email)).
+    r.table(table).getAll(email, {index: 'email'}).
       run(dbConn, function(err, cursor) {
           if (err) throw err;
 
@@ -31,6 +31,17 @@ class User extends BaseModel {
               callback(users);
           });
       });
+  }
+
+  // check for unique email before saving.
+  static create(attrs, callback){
+    this.by_email(attrs.email, users => {
+      if(users.length == 0){
+        super.create(attrs, callback);
+      }else{
+        callback(null);
+      }
+    })
   }
 
   static authenticate(email, password, callback) {

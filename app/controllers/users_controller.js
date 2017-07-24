@@ -41,7 +41,8 @@ var UsersController = {
 
   },
 
-  authenticate: (req, res, next) {
+  authenticate: function(req, res, next) {
+    console.log(req.body);
     var email = req.body.email;
     var password = req.body.password;
 
@@ -52,7 +53,7 @@ var UsersController = {
         res.json({error: "invalid user"});
       }
     });
-  }
+  },
 
   /**
    * return user's bookmarked and confirmed events.

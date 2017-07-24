@@ -10,6 +10,7 @@ router.get( '/users',          users.index);
 router.post('/users',          users.create);
 router.get( '/users/:user_id', users.show);
 router.put( '/users/:user_id', users.update);
+router.post('/users/authenticate', users.authenticate);
 
 router.get(  '/events',           events.index);
 router.post( '/events',           events.create);

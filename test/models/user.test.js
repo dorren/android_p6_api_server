@@ -25,6 +25,27 @@ test.serial.cb("create", t => {
   });
 });
 
+test.serial.cb("create dup", t => {
+  var attrs = {name: 'John', email: 'john@gmail.com'};
+
+  async.waterfall([
+    function(cb){
+      User.create(attrs, user =>{ cb(null); });
+    },
+    function(cb){
+      User.create(attrs, user =>{ cb(null); });
+    },
+    function(cb){
+      User.findAll(users =>{
+        cb(null, users);
+      });
+    },
+  ], function(err, result){
+    t.is(result.length, 1);
+    t.end();
+  });
+});
+
 test.serial.cb("findAll", t => {
   async.waterfall([
     function(cb){
@@ -42,6 +63,25 @@ test.serial.cb("findAll", t => {
     },
   ], function(err, result){
     t.is(result.length, 2);
+    t.end();
+  });
+});
+
+test.serial.cb("by_email", t => {
+  var email = 'john@gmail.com';
+
+  async.waterfall([
+    function(cb){
+      var attrs = {name: 'John', email: email}
+      User.create(attrs, user =>{ cb(null); });
+    },
+    function(cb){
+      User.by_email(email, user =>{
+        cb(null, user);
+      });
+    },
+  ], function(err, result){
+    t.not(result, null);
     t.end();
   });
 });
