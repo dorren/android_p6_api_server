@@ -30,18 +30,13 @@ test.serial.cb("create dup", t => {
 
   async.waterfall([
     function(cb){
-      User.create(attrs, user =>{ cb(null); });
+      User.create(attrs, user =>{ cb(null, user); });
     },
-    function(cb){
-      User.create(attrs, user =>{ cb(null); });
-    },
-    function(cb){
-      User.findAll(users =>{
-        cb(null, users);
-      });
-    },
+    function(user1, cb){
+      User.create(attrs, user =>{ cb(null, user); });
+    }
   ], function(err, result){
-    t.is(result.length, 1);
+    t.not(result.error(), null);
     t.end();
   });
 });

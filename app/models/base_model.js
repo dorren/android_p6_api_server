@@ -4,6 +4,7 @@ class BaseModel {
   constructor(attrs){
     this.attrs = attrs;
   }
+  static errKey() { return "_error"; }
 
   static findAll(callback) {
     var table = this.tableName();
@@ -36,8 +37,16 @@ class BaseModel {
       insert(attrs).run(dbConn, (err, result) => {
         if (err) throw err;
 
-        var key = result.generated_keys[0];
-        this.find(key, callback);
+        if(result.first_error){
+          var e = {};
+          e[this.errKey()]= result.first_error;
+
+          var model = new this(e);
+          callback(model);
+        }else{
+          var key = result.generated_keys[0];
+          this.find(key, callback);
+        }
     });
   }
 
@@ -51,6 +60,10 @@ class BaseModel {
           if (err) throw err;
           this.find(id, callback);
       });
+  }
+
+  error() {
+    return this.attrs[this.constructor.errKey()];
   }
 }
 

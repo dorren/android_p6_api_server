@@ -39,7 +39,11 @@ class User extends BaseModel {
       if(users.length == 0){
         super.create(attrs, callback);
       }else{
-        callback(null);
+        var e = {};
+        e[this.errKey()]= "duplicate user " + attrs.email + " found.";
+
+        var model = new this(e);
+        callback(model);
       }
     })
   }
