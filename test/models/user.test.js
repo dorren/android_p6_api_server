@@ -41,6 +41,21 @@ test.serial.cb("create dup", t => {
   });
 });
 
+test.serial.cb("create multiple", t => {
+  var arr = [{name: 'John', email: 'john@gmail.com'},
+             {name: 'Joe',  email: 'joe@gmail.com'}
+            ];
+
+  async.waterfall([
+    function(cb){
+      User.multiCreate(arr, users =>{ cb(null, users); });
+    }
+  ], function(err, result){
+    t.is(result.length, 2);
+    t.end();
+  });
+});
+
 test.serial.cb("findAll", t => {
   async.waterfall([
     function(cb){
@@ -53,6 +68,27 @@ test.serial.cb("findAll", t => {
     },
     function(cb){
       User.findAll(users =>{
+        cb(null, users);
+      });
+    },
+  ], function(err, result){
+    t.is(result.length, 2);
+    t.end();
+  });
+});
+
+test.serial.cb("by ids", t => {
+  async.waterfall([
+    function(cb){
+      var attrs = {name: 'John', email: 'john@gmail.com'}
+      User.create(attrs, user =>{ cb(null, user.attrs.id); });
+    },
+    function(id1, cb){
+      var attrs = {name: 'Joe', email: 'joe@gmail.com'}
+      User.create(attrs, user =>{ cb(null, [id1, user.attrs.id]); });
+    },
+    function(ids, cb){
+      User.by_ids(ids, users =>{
         cb(null, users);
       });
     },

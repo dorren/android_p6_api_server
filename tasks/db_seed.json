@@ -1,0 +1,101 @@
+{
+  "organizers":
+    [
+      { "email":"dorren@gmail.com",
+        "name":"Dorren",
+        "password":"testtest"
+      },
+      {"email":"frank@gmail.com",
+        "name":"Frank",
+        "password":"testtest"
+      },
+      {"email":"steven@gmail.com",
+        "name":"Steven",
+        "password":"testtest"
+      },
+      {"email":"wendy@gmail.com",
+        "name":"Wendy",
+        "password":"testtest"
+      }
+    ],
+  "users":
+    [
+      {"email":"amy@gmail.com",
+        "name":"Amy",
+        "password":"testtest"
+      },
+      {"email":"betty@gmail.com",
+        "name":"Betty",
+        "password":"testtest"
+      },
+      {"email":"crystal@gmail.com",
+        "name":"Crystal",
+        "password":"testtest"
+      },
+      {"email":"debra@gmail.com",
+        "name":"Debra",
+        "password":"testtest"
+      },
+      {"email":"erika@gmail.com",
+        "name":"Erika",
+        "password":"testtest"
+      },
+      {"email":"felicia@gmail.com",
+        "name":"Felicia",
+        "password":"testtest"
+      },
+      {"email":"grace@gmail.com",
+        "name":"Grace",
+        "password":"testtest"
+      },
+      {"email":"helen@gmail.com",
+        "name":"Helen",
+        "password":"testtest"
+      }
+    ],
+  "events":
+    [
+      { "title":"Hiking in Bear Mountain",
+        "detail":"We will leave car pool at the parking lot at the Sheraton Hotel. Be there 8am sharp. Bring your own lunch and enough water. See you then.",
+       "image_url":"https://s3.amazonaws.com/eventhubapp/hiking.jpg",
+       "time_from":"2017-08-05T08:00:00.0000-05:00",
+       "time_to":  "2017-08-05T16:00:00.0000-05:00"
+      },
+      { "title":"Weekend basketball",
+        "detail":"Usual weekend fun.",
+        "image_url":"https://s3.amazonaws.com/eventhubapp/basketball.jpg",
+        "time_from":"2017-08-12T16:00:00.0000-05:00",
+        "time_to":  "2017-08-12T18:00:00.0000-05:00"
+      },
+      { "title":"Whitewater rafting",
+        "detail":"We will leave car pool at the parking lot at the Sheraton Hotel. Be there 8am sharp. We provide lunch and water. See you then.",
+        "image_url":"https://s3.amazonaws.com/eventhubapp/rafting.jpg",
+        "time_from":"2017-08-19T08:00:00.0000-05:00",
+        "time_to":  "2017-08-19T16:00:00.0000-05:00"
+      },
+      { "title":"Movie night, Dunkirk",
+        "detail":"Move night, watching Dunkirk at whitestone cinema, and dinner afterwards.",
+        "image_url":"https://s3.amazonaws.com/eventhubapp/hiking.jpg",
+        "time_from":"2017-08-06T18:00:00.0000-05:00",
+        "time_to":  "2017-08-06T20:00:00.0000-05:00"
+      },
+      { "title":"Swimming",
+        "detail":"morning swimming in Corona park.",
+        "image_url":"https://s3.amazonaws.com/eventhubapp/swimming.jpg",
+        "time_from":"2017-08-06T06:00:00.0000-05:00",
+        "time_to":  "2017-08-06T07:00:00.0000-05:00"
+      },
+      { "title":"Skiing in Mountain Creek",
+        "detail":"Planning early. We will leave car pool at the parking lot at the Sheraton Hotel. Be there 8am sharp. We provide lunch and water. See you then.",
+        "image_url":"https://s3.amazonaws.com/eventhubapp/skiing.jpg",
+        "time_from":"2017-12-26T07:00:00.0000-05:00",
+        "time_to":  "2017-12-26T04:00:00.0000-05:00"
+      },
+      { "title":"Skiing in Killington VT",
+        "detail":"Planning way early. We will leave car pool at the parking lot at the Sheraton Hotel. Be there 8am sharp. We provide lunch and water. See you then.",
+        "image_url":"https://s3.amazonaws.com/eventhubapp/skiing.jpg",
+        "time_from":"2017-12-31T07:00:00.0000-05:00",
+        "time_to":  "2017-12-31T04:00:00.0000-05:00"
+      }
+    ]
+}

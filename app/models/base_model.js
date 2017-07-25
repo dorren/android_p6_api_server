@@ -29,8 +29,20 @@ class BaseModel {
     });
   }
 
+  static by_ids(model_ids, callback) {
+    var table = this.tableName();
+    r.table(table).getAll(...model_ids).
+      orderBy(r.desc('created_at')).run(dbConn, (err, result) => {
+        if (err) throw err;
+
+        var models = result.map(x => new this(x));
+        callback(models);
+    });
+  }
+
   static create(attrs, callback) {
     var table = this.tableName();
+
     attrs = Object.assign(attrs, {created_at: new Date()});
 
     r.table(table).
@@ -50,6 +62,27 @@ class BaseModel {
     });
   }
 
+  static multiCreate(attrsArr, callback) {
+    var table = this.tableName();
+
+    attrsArr = attrsArr.map(x => {x.created_at = new Date(); return x;});
+
+    r.table(table).
+      insert(attrsArr).run(dbConn, (err, result) => {
+        if (err) throw err;
+
+        if(result.first_error){
+          var e = {};
+          e[this.errKey()]= result.first_error;
+
+          var model = new this(e);
+          callback(model);
+        }else{
+          var keys = result.generated_keys;
+          this.by_ids(keys, callback);
+        }
+    });
+  }
 
   static update(id, attrs, callback) {
     var table = this.tableName();

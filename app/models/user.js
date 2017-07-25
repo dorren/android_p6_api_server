@@ -1,5 +1,6 @@
 var r = require('rethinkdb');
 var BaseModel = require('./base_model');
+var EventUser = require('./event_user');
 
 class User extends BaseModel {
   static tableName() { return "users"; }
@@ -63,6 +64,14 @@ class User extends BaseModel {
               callback(users[0]);
           });
       });
+  }
+
+  bookmark(event_id, callback) {
+    EventUser.bookmark(this.attrs.id, event_id, callback);
+  }
+
+  confirm(event_id, callback) {
+    EventUser.confirm(this.attrs.id, event_id, callback);
   }
 }
 
