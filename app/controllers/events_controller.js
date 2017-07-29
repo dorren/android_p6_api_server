@@ -1,11 +1,12 @@
 var Event = require("../models/event");
 var User = require("../models/user");
+var EventUser = require("../models/event_user");
 
 var EventsController = {
   index: (req, res, next) => {
-    Event.findAll(events => {
+    Event.findAll({orderBy: {index: "time_from"}}, events => {
       var events_arr = events.map(x => x.attrs);
-      res.json(events_arr);
+      res.json({events: events_arr});
     });
   },
 
@@ -35,12 +36,9 @@ var EventsController = {
   bookmark: (req, res, next) => {
     var event_id = req.params.event_id;
     var user_id = req.body.user_id;
-    var attrs = {event_id: event_id, user_id: user_id};
 
-    EventUser.create(attrs, eventUser =>{
-      eventUser.event(event => {
-        res.json(event.attrs);
-      })
+    EventUser.bookmark(user_id, event_id, eventUser =>{
+      res.json(eventUser);
     });
   },
 
@@ -48,6 +46,20 @@ var EventsController = {
   },
 
   confirm: (req, res, next) => {
+    var event_id = req.params.event_id;
+    var user_id = req.body.user_id;
+
+    EventUser.confirm(user_id, event_id, eventUser =>{
+      res.json(eventUser);
+    });
+  },
+
+  by_user: (req, res, next) => {
+    var user_id = req.params.user_id;
+
+    EventUser.confirm(user_id, event_id, eventUser =>{
+      res.json(eventUser);
+    });
   }
 }
 

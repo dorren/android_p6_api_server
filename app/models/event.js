@@ -78,6 +78,37 @@ class Event extends BaseModel {
 
     return attrs;
   }
+
+  // return all events by a user
+  // {
+  //   "left": {
+  //     "bookmarked": true ,
+  //     "created_at": Fri Jul 28 2017 23:49:09 GMT+00:00 ,
+  //     "event_id":  "f3f6375e-533d-4f43-b946-fec74b6faf36" ,
+  //     "id":  "d74df45e-233a-4579-858a-a47af4820023" ,
+  //     "user_id":  "9539080d-9251-40a2-9311-90c5addaa734"
+  //   } ,
+  //   "right": {
+  //     "created_at": Thu Jul 27 2017 15:58:42 GMT+00:00 ,
+  //     "detail": "We will leave car pool at the parking lot at the Sheraton Hotel. Be there 8am sharp. Bring your own lunch and enough water. See you then." ,
+  //     "id":  "f3f6375e-533d-4f43-b946-fec74b6faf36" ,
+  //     "image_url": https://s3.amazonaws.com/eventhubapp/hiking.jpg, »
+  //     "location":  "3020 Seven Lakes Drive, Tomkins Cove, NY 10986" ,
+  //     "organizer_id":  "4e71988e-97c6-476e-a2c0-097e35db1a49" ,
+  //     "time_from":  "2017-08-05T08:00:00.0000-05:00" ,
+  //     "time_to":  "2017-08-05T16:00:00.0000-05:00" ,
+  //     "title":  "Hiking in Bear Mountain"
+  //   }
+  // }
+  static by_user(user_id) {
+    var table = this.tableName();
+
+    r.table("events_users").filter({user_id: user_id}).
+      eqJoin('event_id', r.db('events_dev').table('events')).
+      run(dbConn, (err, result) => {
+
+      });
+  }
 }
 
 module.exports = Event;

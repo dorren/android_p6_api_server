@@ -9,6 +9,7 @@ router.get( '/',               home.index);
 router.get( '/users',          users.index);
 router.post('/users',          users.create);
 router.get( '/users/:user_id', users.show);
+router.get( '/users/:user_id/events', events.by_user);
 router.put( '/users/:user_id', users.update);
 router.post('/users/authenticate', users.authenticate);
 

@@ -34,7 +34,13 @@ class DbSeed {
         r.table('users').delete().run(dbConn, (result)=>{ cb(null); });
       },
       function(cb){  // truncate table
+        r.table('users').indexCreate("email").run(dbConn, (result)=>{ cb(null); });
+      },
+      function(cb){  // truncate table
         r.table('events').delete().run(dbConn, (result)=>{ cb(null); });
+      },
+      function(cb){  // truncate table
+        r.table('events').indexCreate("time_from").run(dbConn, (result)=>{ cb(null); });
       },
       function(cb){  // truncate table
         r.table('events_users').delete().run(dbConn, (result)=>{ cb(null); });
@@ -50,7 +56,7 @@ class DbSeed {
       },
       function(hash, cb){
         klass.participateEvents(hash, cb);
-      },
+      }
     ], function(err, result){
       console.log("db seeded.");
       callback();
@@ -87,6 +93,7 @@ class DbSeed {
     });
   }
 
+
   static participateEvents(hash, callback){
     var events = hash.events;
 
@@ -104,13 +111,6 @@ class DbSeed {
     var users = hash.users;
 
     async.waterfall([
-      cb => { // create event organizer
-        var user_id = this.randomUserId(organizers);
-        var new_attrs = {organizer_id: user_id};
-        Event.update(event.attrs.id, new_attrs, event =>{
-          cb(null);
-        });
-      },
       cb => { // create bookmark
         var user_id = this.randomUserId(users);
         EventUser.bookmark(user_id, event.attrs.id, event_user => {
@@ -118,6 +118,12 @@ class DbSeed {
         });
       },
       (user_id, cb) => { // create 2nd bookmark
+        var user_id = this.randomUserId(users);
+        EventUser.bookmark(user_id, event.attrs.id, event_user => {
+          cb(null, user_id);
+        });
+      },
+      (user_id, cb) => { // create 3rd bookmark
         var user_id = this.randomUserId(users);
         EventUser.bookmark(user_id, event.attrs.id, event_user => {
           cb(null, user_id);

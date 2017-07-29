@@ -51,6 +51,22 @@
       {"email":"helen@gmail.com",
         "name":"Helen",
         "password":"testtest"
+      },
+      {"email":"jennifer@gmail.com",
+        "name":"Jennifer",
+        "password":"testtest"
+      },
+      {"email":"katherine@gmail.com",
+        "name":"Katherine",
+        "password":"testtest"
+      },
+      {"email":"lillian@gmail.com",
+        "name":"Lillian",
+        "password":"testtest"
+      },
+      {"email":"mandy@gmail.com",
+        "name":"Mandy",
+        "password":"testtest"
       }
     ],
   "events":
@@ -59,43 +75,64 @@
         "detail":"We will leave car pool at the parking lot at the Sheraton Hotel. Be there 8am sharp. Bring your own lunch and enough water. See you then.",
        "image_url":"https://s3.amazonaws.com/eventhubapp/hiking.jpg",
        "time_from":"2017-08-05T08:00:00.0000-05:00",
-       "time_to":  "2017-08-05T16:00:00.0000-05:00"
+       "time_to":  "2017-08-05T16:00:00.0000-05:00",
+       "location": "3020 Seven Lakes Drive, Tomkins Cove, NY 10986"
       },
       { "title":"Weekend basketball",
         "detail":"Usual weekend fun.",
         "image_url":"https://s3.amazonaws.com/eventhubapp/basketball.jpg",
         "time_from":"2017-08-12T16:00:00.0000-05:00",
-        "time_to":  "2017-08-12T18:00:00.0000-05:00"
+        "time_to":  "2017-08-12T18:00:00.0000-05:00",
+        "location": "Colden St, Flushing, NY 11355"
       },
       { "title":"Whitewater rafting",
         "detail":"We will leave car pool at the parking lot at the Sheraton Hotel. Be there 8am sharp. We provide lunch and water. See you then.",
         "image_url":"https://s3.amazonaws.com/eventhubapp/rafting.jpg",
         "time_from":"2017-08-19T08:00:00.0000-05:00",
-        "time_to":  "2017-08-19T16:00:00.0000-05:00"
+        "time_to":  "2017-08-19T16:00:00.0000-05:00",
+        "location": "1519 PA-903, Jim Thorpe, PA 18229"
       },
       { "title":"Movie night, Dunkirk",
         "detail":"Move night, watching Dunkirk at whitestone cinema, and dinner afterwards.",
-        "image_url":"https://s3.amazonaws.com/eventhubapp/hiking.jpg",
+        "image_url":"https://s3.amazonaws.com/eventhubapp/movie.jpg",
         "time_from":"2017-08-06T18:00:00.0000-05:00",
-        "time_to":  "2017-08-06T20:00:00.0000-05:00"
+        "time_to":  "2017-08-06T20:00:00.0000-05:00",
+        "location": "2855 Ulmer St, Flushing, NY 11354"
       },
       { "title":"Swimming",
         "detail":"morning swimming in Corona park.",
         "image_url":"https://s3.amazonaws.com/eventhubapp/swimming.jpg",
         "time_from":"2017-08-06T06:00:00.0000-05:00",
-        "time_to":  "2017-08-06T07:00:00.0000-05:00"
+        "time_to":  "2017-08-06T07:00:00.0000-05:00",
+        "location": "131-04 Meridian Rd, Flushing, NY 11368"
       },
       { "title":"Skiing in Mountain Creek",
         "detail":"Planning early. We will leave car pool at the parking lot at the Sheraton Hotel. Be there 8am sharp. We provide lunch and water. See you then.",
         "image_url":"https://s3.amazonaws.com/eventhubapp/skiing.jpg",
         "time_from":"2017-12-26T07:00:00.0000-05:00",
-        "time_to":  "2017-12-26T04:00:00.0000-05:00"
+        "time_to":  "2017-12-26T16:00:00.0000-05:00",
+        "location": "200 route 94 vernon township nj 07462"
       },
       { "title":"Skiing in Killington VT",
         "detail":"Planning way early. We will leave car pool at the parking lot at the Sheraton Hotel. Be there 8am sharp. We provide lunch and water. See you then.",
         "image_url":"https://s3.amazonaws.com/eventhubapp/skiing.jpg",
         "time_from":"2017-12-31T07:00:00.0000-05:00",
-        "time_to":  "2017-12-31T04:00:00.0000-05:00"
+        "time_to":  "2018-01-02T16:00:00.0000-05:00",
+        "location": "4763 Killington Rd, Killington, VT 05751"
+      },
+      { "title":"Play Table Tennis",
+        "detail":"Casual table tennis games. All levels welcome. We will play at New York International Table Tennis Center. Plenty of spaces, and easy to park too.",
+        "image_url":"https://s3.amazonaws.com/eventhubapp/table-tennis.jpg",
+        "time_from":"2017-08-05T13:00:00.0000-05:00",
+        "time_to":  "2018-08-05T18:00:00.0000-05:00",
+        "location": "134-32 35th Ave, Flushing, NY 11354"
+      },
+      { "title":"Surfing at Rockaway Beach",
+        "detail":"We will meet at the roackaway beach for surfing classes. bring sunscreen and enough water. Beginner and experts are all welcome. We will have beginner classes starts at 1:00PM, so be on time.",
+        "image_url":"https://s3.amazonaws.com/eventhubapp/surfing.jpg",
+        "time_from":"2017-08-05T13:00:00.0000-05:00",
+        "time_to":  "2018-08-05T18:00:00.0000-05:00",
+        "location": "192 Beach 92nd St, Far Rockaway, NY 11693"
       }
     ]
 }

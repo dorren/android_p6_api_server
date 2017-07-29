@@ -26,9 +26,15 @@ class TestHelper {
         });
       },
       function(cb){  // truncate table
+        r.table('users').indexCreate("email").run(dbConn, (result)=>{ cb(null); });
+      },
+      function(cb){  // truncate table
         r.table('events').delete().run(dbConn, (result)=>{
           cb(null);
         });
+      },
+      function(cb){  // truncate table
+        r.table('events').indexCreate("time_from").run(dbConn, (result)=>{ cb(null); });
       },
       function(cb){  // truncate table
         r.table('events_users').delete().run(dbConn, (result)=>{

@@ -56,7 +56,7 @@ test.serial.cb("create multiple", t => {
   });
 });
 
-test.serial.cb("findAll", t => {
+test.serial.cb("findAll()", t => {
   async.waterfall([
     function(cb){
       var attrs = {name: 'John', email: 'john@gmail.com'}
@@ -67,7 +67,8 @@ test.serial.cb("findAll", t => {
       User.create(attrs, user =>{ cb(null); });
     },
     function(cb){
-      User.findAll(users =>{
+      var options = {};
+      User.findAll(options, users =>{
         cb(null, users);
       });
     },

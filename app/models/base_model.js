@@ -6,13 +6,25 @@ class BaseModel {
   }
   static errKey() { return "_error"; }
 
-  static findAll(callback) {
+  static findAll(options, callback) {
     var table = this.tableName();
-    r.table(table).orderBy(r.desc('created_at')).run(dbConn, (err, result) => {
+    var query = r.table(table);
+
+    if(options.orderBy == undefined){
+      query = query.orderBy(r.desc('created_at'));
+    }else{
+      query = query.orderBy(options.orderBy);
+    }
+
+    query.run(dbConn, (err, cursor) => {
         if (err) throw err;
 
-        var models = result.map(x => new this(x));
-        callback(models);
+        cursor.toArray((err, result) => {
+            if (err) throw err;
+
+            var models = result.map( x => new this(x));
+            callback(models);
+        });
     });
   }
 
@@ -97,6 +109,10 @@ class BaseModel {
 
   error() {
     return this.attrs[this.constructor.errKey()];
+  }
+
+  static toTime(value){
+    return r.ISO8601(value);
   }
 }
 

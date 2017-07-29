@@ -38,5 +38,27 @@ test.serial.cb("findFull", t => {
   ], function(err, result){
     t.end();
   });
+});
 
+test.serial.cb("findAll sort by time_from asc", t => {
+  async.waterfall([
+    function(cb){
+      var attrs = {title: 'Swimming', detail: 'in the pool',
+                   time_from: Event.toTime("2017-08-05T08:00:00.0000-05:00")}
+      Event.create(attrs, event => { cb(null); });
+    },
+    function(cb){
+      var attrs = {title: 'Hiking', detail: 'in the mountain',
+                   time_from: Event.toTime("2017-08-04T08:00:00.0000-05:00")}
+      Event.create(attrs, event => { cb(null); });
+    },
+    function(cb){
+      Event.findAll({orderBy: {index: "time_from"}}, events =>{
+        cb(null, events);
+      });
+    }
+  ], function(err, events){
+    t.is(events[0].attrs.title, "Hiking");
+    t.end();
+  });
 });

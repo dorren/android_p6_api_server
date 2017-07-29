@@ -38,7 +38,7 @@ test.serial.cb("bookmark and confirm", t => {
       });
     },
     function(event_user, cb){  // assert only 1 row created.
-      EventUser.findAll(event_users =>{
+      EventUser.findAll({}, event_users =>{
         t.is(event_users.length, 1);
         cb(null, 'done');
       });

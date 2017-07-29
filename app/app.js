@@ -10,7 +10,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var r = require('rethinkdb');
 
-var env = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV || 'dev';
 var appCfg = new AppCfg(env);
 
 var app = express();
