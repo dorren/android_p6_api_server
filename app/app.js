@@ -30,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 var router = require('../app/routes');
 app.use('/', router);
 
+console.log(router.stack);
 
 r.connect( appCfg.get("rethinkdb"), function(err, conn) {
     if (err) throw err;

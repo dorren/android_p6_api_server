@@ -55,10 +55,12 @@ var EventsController = {
   },
 
   by_user: (req, res, next) => {
-    var user_id = req.params.user_id;
+    var user_id = req.query.user_id;
+    var options = {orderBy: {index: "time_from"}};
 
-    EventUser.confirm(user_id, event_id, eventUser =>{
-      res.json(eventUser);
+    Event.by_user(user_id, events => {
+      var events_arr = events.map(x => x.attrs);
+      res.json({events: events_arr});
     });
   }
 }

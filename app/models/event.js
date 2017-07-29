@@ -100,13 +100,22 @@ class Event extends BaseModel {
   //     "title":  "Hiking in Bear Mountain"
   //   }
   // }
-  static by_user(user_id) {
+  static by_user(user_id, callback) {
     var table = this.tableName();
 
     r.table("events_users").filter({user_id: user_id}).
-      eqJoin('event_id', r.db('events_dev').table('events')).
-      run(dbConn, (err, result) => {
+      eqJoin('event_id', r.table('events')).
+      without({"left": {"id": true, "created_at": true, "event_id": true}}).zip().
+      orderBy("time_from").
+      run(dbConn, (err, cursor) => {
+        if (err) throw err;
 
+        cursor.toArray((err, result) => {
+            if (err) throw err;
+            
+            var models = result.map( x => new this(x));
+            callback(models);
+        });
       });
   }
 }
