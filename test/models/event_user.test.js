@@ -39,7 +39,7 @@ test.serial.cb("by_user", t => {
       });
     },
     function(event_user, cb){  // assert only 1 row created.
-      Event.by_user(event_user.attrs.user_id, events =>{
+      Event.by_user(event_user.attrs.user_id, {}, events =>{
         var attrs = events[0].attrs;
         t.is(attrs.bookmarked, true);
         t.is(attrs.confirmed, true);

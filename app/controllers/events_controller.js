@@ -57,8 +57,13 @@ var EventsController = {
   by_user: (req, res, next) => {
     var user_id = req.query.user_id;
     var options = {orderBy: {index: "time_from"}};
-
-    Event.by_user(user_id, events => {
+    if(req.query.bookmarked){
+      options.bookmarked = true;
+    }
+    if(req.query.confirmed){
+      options.confirmed = true;
+    }
+    Event.by_user(user_id, options, events => {
       var events_arr = events.map(x => x.attrs);
       res.json({events: events_arr});
     });
