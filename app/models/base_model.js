@@ -124,7 +124,11 @@ class BaseModel {
   }
 
   static toTime(value){
-    return r.ISO8601(value);
+    if(value && typeof(value) == "string"){
+      return r.ISO8601(value);
+    }else{
+      return value;
+    }
   }
 }
 

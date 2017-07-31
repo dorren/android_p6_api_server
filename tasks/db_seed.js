@@ -84,6 +84,9 @@ class DbSeed {
     var event_arr = event_arr.map( event => {
       var organizer_id = this.randomUserId(organizers);
       event.organizer_id = organizer_id;
+
+      event.time_from = Event.toTime(event.time_from);
+      event.time_to = Event.toTime(event.time_to);
       return event;
     });
 
