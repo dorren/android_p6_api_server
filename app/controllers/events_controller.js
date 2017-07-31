@@ -4,7 +4,14 @@ var EventUser = require("../models/event_user");
 
 var EventsController = {
   index: (req, res, next) => {
-    Event.findAll({orderBy: {index: "time_from"}}, events => {
+    var options = {orderBy: {index: "time_from"}};
+    options.where = {};
+    
+    if(req.query.organizer_id){
+      options.where.organizer_id = req.query.organizer_id;
+    }
+
+    Event.findAll(options, events => {
       var events_arr = events.map(x => x.attrs);
       res.json({events: events_arr});
     });

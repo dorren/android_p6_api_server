@@ -23,7 +23,6 @@ var UsersController = {
     var email    = req.body.email;
     var name     = req.body.name;
     var password = req.body.password;
-    console.log(email + ", " + name + ", " + password);
 
     var attrs = {name: name, email: email, password: password};
     User.create(attrs, user => {
@@ -42,7 +41,6 @@ var UsersController = {
   },
 
   authenticate: function(req, res, next) {
-    console.log(req.body);
     var email = req.body.email;
     var password = req.body.password;
 

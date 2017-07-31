@@ -6,6 +6,15 @@ import EventUser from './event_user'
 class Event extends BaseModel {
   static tableName() { return "events"; }
 
+  static create(attrs, callback) {
+    if(attrs.time_from && typeof(attrs.time_from) == "string"){
+      attrs.time_from = this.toTime(attrs.time_from);
+    }
+    if(attrs.time_to && typeof(attrs.time_to) == "string"){
+      attrs.time_to = this.toTime(attrs.time_to);
+    }
+    super.create(attrs, callback);
+  }
   /**
    *  return event attributes along with its associations as js hash.
    *

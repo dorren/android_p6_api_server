@@ -6,6 +6,14 @@ class BaseModel {
   }
   static errKey() { return "_error"; }
 
+  /**
+   * return list of events.
+   *
+   * example query options:
+   *     {where: {user_id: "1234"},
+   *      orderBy: "created_at"
+   *     }
+   */
   static findAll(options, callback) {
     var table = this.tableName();
     var query = r.table(table);
@@ -14,6 +22,10 @@ class BaseModel {
       query = query.orderBy(r.desc('created_at'));
     }else{
       query = query.orderBy(options.orderBy);
+    }
+
+    if(options.where && Object.keys(options.where).length > 0){
+      query = query.filter(options.where);
     }
 
     query.run(dbConn, (err, cursor) => {
