@@ -8,7 +8,8 @@
     "start": "node ./bin/www",
     "test": "NODE_ENV=test ava --serial",
     "test:watch": "ava --watch",
-    "seed": "node ./tasks/db_seed.js"
+    "seed": "node ./tasks/db_seed.js",
+    "prodseed": "NODE_ENV=production node ./tasks/db_seed.js"
   },
   "author": "",
   "license": "ISC",
@@ -24,11 +25,11 @@
   },
   "dependencies": {
     "body-parser": "^1.17.2",
+    "chalk": "^2.0.1",
     "cookie-parser": "^1.4.3",
     "debug": "^2.6.8",
     "express": "^4.15.3",
     "morgan": "^1.8.2",
-    "pm2": "^2.6.1",
     "rethinkdb": "^2.3.3",
     "underscore": "^1.8.3"
   },

@@ -1,20 +1,12 @@
 {
   "organizers":
     [
-      { "email":"dorren@gmail.com",
-        "name":"Dorren",
-        "password":"testtest"
-      },
-      {"email":"frank@gmail.com",
-        "name":"Frank",
+      { "email":"tester@gmail.com",
+        "name":"Tester",
         "password":"testtest"
       },
       {"email":"steven@gmail.com",
         "name":"Steven",
-        "password":"testtest"
-      },
-      {"email":"wendy@gmail.com",
-        "name":"Wendy",
         "password":"testtest"
       }
     ],
@@ -34,6 +26,10 @@
       },
       {"email":"debra@gmail.com",
         "name":"Debra",
+        "password":"testtest"
+      },
+      {"email":"frank@gmail.com",
+        "name":"Frank",
         "password":"testtest"
       },
       {"email":"erika@gmail.com",
@@ -67,12 +63,16 @@
       {"email":"mandy@gmail.com",
         "name":"Mandy",
         "password":"testtest"
+      },
+      {"email":"wendy@gmail.com",
+        "name":"Wendy",
+        "password":"testtest"
       }
     ],
   "events":
     [
       { "title":"Hiking in Bear Mountain",
-        "detail":"We will leave car pool at the parking lot at the Sheraton Hotel. Be there 8am sharp. Bring your own lunch and enough water. See you then.",
+        "detail":"We will leave car pool at the parking lot at the Sheraton Hotel. Be there 8am sharp. Bring your own lunch and enough water. See you then.\n\n Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
        "image_url":"https://s3.amazonaws.com/eventhubapp/hiking.jpg",
        "time_from":"2017-08-05T08:00:00.0000-05:00",
        "time_to":  "2017-08-05T16:00:00.0000-05:00",
@@ -86,7 +86,7 @@
         "location": "Colden St, Flushing, NY 11355"
       },
       { "title":"Whitewater rafting",
-        "detail":"We will leave car pool at the parking lot at the Sheraton Hotel. Be there 8am sharp. We provide lunch and water. See you then.",
+        "detail":"We will leave car pool at the parking lot at the Sheraton Hotel. Be there 8am sharp. We provide lunch and water. See you then.\n\n\n Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n\n Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n\n Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         "image_url":"https://s3.amazonaws.com/eventhubapp/rafting.jpg",
         "time_from":"2017-08-19T08:00:00.0000-05:00",
         "time_to":  "2017-08-19T16:00:00.0000-05:00",

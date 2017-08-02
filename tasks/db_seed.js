@@ -13,7 +13,7 @@ var EventUser = require("../app/models/event_user");
 // setup initial db data
 class DbSeed {
   static dbConfig(){
-    var env = 'dev';
+    var env = process.env.NODE_ENV || 'dev';
     var appCfg = new AppCfg(env);
     return appCfg.get("rethinkdb");
   }
@@ -58,7 +58,6 @@ class DbSeed {
         klass.participateEvents(hash, cb);
       }
     ], function(err, result){
-      console.log("db seeded.");
       callback();
     });
   }
@@ -155,4 +154,7 @@ class DbSeed {
   }
 }
 
-DbSeed.execute(()=>{});
+DbSeed.execute(()=>{
+  console.log("finish");
+  process.exit(0);
+});
