@@ -133,6 +133,13 @@
         "time_from":"2017-08-05T13:00:00.0000-05:00",
         "time_to":  "2018-08-05T18:00:00.0000-05:00",
         "location": "192 Beach 92nd St, Far Rockaway, NY 11693"
+      },
+      { "title":"Skiing in Whistler Canada",
+        "detail":"Planning way early for winter fun.",
+        "image_url":"https://s3.amazonaws.com/eventhubapp/skiing.jpg",
+        "time_from":"2018-01-18T07:00:00.0000-05:00",
+        "time_to":  "2018-01-21T16:00:00.0000-05:00",
+        "location": "4545 Blackcomb Way, Whistler, BC V0N 1B4, Canada"
       }
     ]
 }
